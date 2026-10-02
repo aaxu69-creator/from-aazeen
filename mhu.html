@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Boyfriend's Day 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#f096b4; --card:#fff4cb; --deep:#7a1f3d; --accent:#7a1f3d;
+  --soft:rgba(240,150,180,.25); --line:#f096b4; --text:#4a1f2b;
+  --shadow:rgba(90,20,45,.25);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{
+  margin:0;background-color:#f096b4;
+  background-image:radial-gradient(circle,#fff4cb 0 9px,transparent 10px),radial-gradient(circle,#fff4cb 0 9px,transparent 10px);
+  background-size:68px 68px;background-position:0 0,34px 34px;
+  color:var(--text);font-family:'Nunito',system-ui,sans-serif;line-height:1.8;overflow-x:hidden
+}
+
+/* Hearts and teddy bears sit behind the page content */
+.teddy-rain,.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.falling-bear{
+  position:absolute;left:var(--left);top:-12vh;
+  font:var(--size)/1 system-ui,sans-serif;opacity:.48;
+  animation:fall var(--duration) linear var(--delay) infinite;will-change:transform
+}
+.hearts span{
+  position:absolute;left:var(--left);bottom:-45px;opacity:.72;
+  animation:float var(--duration) linear var(--delay) infinite;will-change:transform
+}
+@keyframes fall{
+  0%{transform:translate(0,-12vh) rotate(0deg)}
+  25%{transform:translate(var(--sway),20vh) rotate(100deg)}
+  50%{transform:translate(calc(var(--sway)*-.55),52vh) rotate(220deg)}
+  75%{transform:translate(var(--sway),82vh) rotate(310deg)}
+  100%{transform:translate(0,115vh) rotate(430deg)}
+}
+@keyframes float{
+  0%{transform:translate(0,0) rotate(-15deg);opacity:0}
+  12%{opacity:.72}
+  50%{transform:translate(var(--sway),-55vh) rotate(15deg)}
+  88%{opacity:.72}
+  100%{transform:translate(calc(var(--sway)*-.5),-115vh) rotate(-15deg);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .falling-bear,.hearts span{animation-duration:30s!important}
+}
+
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:28px 18px 48px}
+section{margin-bottom:48px}
+.hero{
+  text-align:center;padding:26px 18px 28px;background:rgba(255,244,203,.97);
+  border-radius:28px;box-shadow:0 10px 30px var(--shadow)
+}
+.tag{display:inline-block;background:var(--soft);color:var(--deep);padding:6px 16px;border-radius:99px;font-weight:700;font-size:.9rem}
+h1{font-family:'Dancing Script',cursive;font-size:clamp(2.2rem,8vw,3.4rem);color:var(--deep);margin:16px 0 6px;line-height:1.15}
+.hero p{color:#7a1f3d;font-size:1.1rem;margin:0}
+.bear{font-size:3rem;margin-top:6px}
+.envelope{
+  display:block;margin:28px auto 0;background:var(--accent);color:#fff4cb;border:0;
+  border-radius:99px;padding:14px 30px;font:700 1.05rem 'Nunito',sans-serif;
+  cursor:pointer;box-shadow:0 8px 20px var(--shadow)
+}
+.reveal{display:none}
+.reveal.show{display:block}
+h2{
+  font-family:'Dancing Script',cursive;font-size:2.2rem;color:var(--deep);
+  text-align:center;margin:0 auto 22px;display:table;
+  background:rgba(255,244,203,.97);padding:2px 26px;border-radius:99px
+}
+.letter{
+  background:var(--card);border:2px solid var(--line);border-radius:24px;
+  padding:34px 26px;box-shadow:0 10px 30px var(--shadow)
+}
+.letter p{margin:0 0 18px;font-size:1.05rem}
+.sign{font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--deep);text-align:right;margin-top:10px;white-space:pre-line}
+footer{
+  text-align:center;color:#7a1f3d;font-size:.95rem;display:table;margin:0 auto;
+  background:rgba(255,244,203,.97);padding:6px 22px;border-radius:99px
+}
+
+/* Aesthetic Polaroid at the end */
+.polaroid-wrap{display:flex;justify-content:center;margin:38px auto 12px}
+.polaroid{
+  width:min(310px,82vw);padding:12px 12px 18px;background:#fffdf8;
+  border-radius:4px;box-shadow:0 12px 28px rgba(75,24,39,.28);
+  transform:rotate(-3deg);transition:transform .3s ease,box-shadow .3s ease;
+}
+.polaroid:hover{transform:rotate(0deg) translateY(-4px);box-shadow:0 18px 34px rgba(75,24,39,.32)}
+.polaroid img{
+  display:block;width:100%;aspect-ratio:1/1;object-fit:cover;
+  background:#f7e8e6;filter:saturate(1.06) contrast(1.02)
+}
+.polaroid-caption{
+  padding-top:12px;text-align:center;color:#563b3d;
+  font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;
+  font-stretch:condensed;font-size:1.15rem;letter-spacing:.5px;line-height:1.2
+}
+</style>
+</head>
+<body>
+<div class="teddy-rain" id="teddyRain" aria-hidden="true"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<main>
+  <section class="hero">
+    <h1>Happy Boyfriend's Day, meri jaannn</h1>
+    <p>I love you shoo muchhh babyyy, i really hope u like it.</p>
+    <div class="bear">🧸</div>
+    <button class="envelope" id="open">Tap to Open, bugguu 💌</button>
+  </section>
+
+  <div class="reveal" id="content">
+    <section>
+      <div class="letter">
+        <p>My dearest Naumaan, aaj boyfriend's day hai and, I wanted to do something special for you, something that could hold even a small part of everything I feel, and I realised words are the best way I know. So here I am, trying to put my whole heart into this small letter.</p>
+        <p>Meri jaan, I love youu shoooo mcuhhhh :( You are the bestest boyfriend and the bestest friend i could ever ask for babyyy. Ugh jaanu i sometimes wonder ki maine tujhe kese pata liyaaaa, I STILL CAN'T BELIVE IT THAT YOU'RE MY BOYFRIENDDDD. YOU ARE MY BABY, MY SHONU, MY GOLUUU MOLUU BUGGUUUUU!!!!!! UGH BABY I MISS YOUU SOO SOO SOO SOOO SOOOO FUCKING MUCHHHHH!!!!</p>
+        <p>Babyyyyy i wanna thank you for being patient with me when I'm moody, for listening to me when I fuss over the things that don't even matter, and for making me feel heard in a world that is always so loud. Thank you for the little things that you probably don't even realise you do, the way you check up on me, the way you make me laugh, and the way you love me.</p>
+        <p>Shona, thank you for loving me. Tujhe pta hai, i used to feel so unlovable until i met you. You love me in a way no one has everr loved me, you care for me in a way no one has ever cared for me, and you make me happy in a way no one has ever made me. Tujhe pta hai, hum jab bhi call pr baat krte hai i blush so harddddd, i fear ki i won't even look up at you when we meet irl, kyunki m itna blush krungiiiii.</p>
+        <p>Bugguuu you make me feel so safe, and that is the biggest gift for me. Tere saath I can be silly nd completely mastikhor, I can be sad, I can be completely and totally myself, and you love me anyway. You've shown me what it means to be cared for without conditions, and I hope I make you feel even half as loved as you make me feel every single day. I hope i make you feel comfortable and babu, all i want for you is to be happy. M tujhe itna khush rakhna chahti hu na babyyyy, m tujhe duniya ki saaarrrriiii khushiyan dena chahti hu. Tu jab rota hai ya anxious ho jaata hai na toh mujhe bohot bura lagta hai. I hate it when i hurt you, I hate it when i make u sad or feel anxious. Trust me baby i will try my best to be a better girlfriend.</p>
+        <p>Goluuu i love the way you speak to me, I love your voice, I love the way you laugh, I love your smile, I love your cheeks so much yarrr THEY ARE SOOOO CUTU CUTUUUU UGHHHH I WISH I COULD EAT THEMMMMM!!!! i loveee your eyes, your lil nosie, your lips, your hands, ughh baby you are, without a doubt, one of the best things that has ever happened to meeee.</p>
+        <p>Babu life isn't always easy, and there will be days that test us, but I promise to choose you every time. I promise to cheer for your dreams as loudly as I cheer for my own, to stand beside you on your hardest days, and to celebrate with you on your happiest ones. I promise to keep making memories with you, from the big adventures to the lazy evenings where we just sit together and do nothing at all, because with you even nothing feels like everything. I wish to go with you on that picnic date so bad istggggg.</p>
+        <p>I hope you know how proud I am of you, how much I appreciate you, and how lucky I feel to be yours. You deserve all the happiness, all the success, and all the love the world has to offer, and I promise baby, i will stay with you, by your side thru everything. Whatever the future holds, I want you in it, laughing beside me, annoying me, kissing me, cuddling me, hugging me, and growing with me.</p>
+        <p>Meri jaanu, I just wanna tell you that you are loved, you are valued, and you are so deeply cherished, you matter to me so muchhh baby, you are my first priority &lt;3. Thank you for being my best friend, my safe place, and my favourite person. Happy Boyfriend's Day, my love. I love you more than these words could ever say.</p>
+        <div class="sign">-Yours Lovingly,<br>aazu &lt;3</div>
+      </div>
+    </section>
+
+    <footer>I love you mera golu molu shonu babyyy, mwahhhhh &lt;3</footer>
+
+    <div class="polaroid-wrap">
+      <figure class="polaroid">
+        <img src="aazu.jpg" alt="A favorite photo of Aazu and Nom Nom">
+        <figcaption class="polaroid-caption">aazu loves nom nom &lt;3</figcaption>
+      </figure>
+    </div>
+  </div>
+</main>
+
+<script>
+const teddyRain = document.getElementById('teddyRain');
+for (let i = 0; i < 150; i++) {
+  const bear = document.createElement('span');
+  bear.className = 'falling-bear';
+  bear.textContent = '🧸';
+  bear.style.setProperty('--left', `${Math.random() * 100}%`);
+  bear.style.setProperty('--size', `${14 + Math.random() * 10}px`);
+  bear.style.setProperty('--duration', `${10 + Math.random() * 16}s`);
+  bear.style.setProperty('--delay', `${-Math.random() * 26}s`);
+  bear.style.setProperty('--sway', `${-45 + Math.random() * 90}px`);
+  teddyRain.appendChild(bear);
+}
+
+const hearts = document.getElementById('hearts');
+const heartTypes = ['🩷', '💛'];
+for (let i = 0; i < 18; i++) {
+  const heart = document.createElement('span');
+  heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+  heart.style.setProperty('--left', `${Math.random() * 100}%`);
+  heart.style.setProperty('--sway', `${-60 + Math.random() * 120}px`);
+  heart.style.setProperty('--duration', `${9 + Math.random() * 10}s`);
+  heart.style.setProperty('--delay', `${-Math.random() * 19}s`);
+  heart.style.fontSize = `${16 + Math.random() * 13}px`;
+  hearts.appendChild(heart);
+}
+
+document.getElementById('open').onclick = function() {
+  this.style.display = 'none';
+  const content = document.getElementById('content');
+  content.classList.add('show');
+  setTimeout(() => content.scrollIntoView({behavior: 'smooth'}), 100);
+};
+</script>
+</body>
+</html>
